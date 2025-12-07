@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darrell Wells - Marketing & Audio Production Professional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1d1d1f;
+            --secondary: #f5f5f7;
+            --accent: #0071e3;
+            --accent-hover: #0077ed;
+            --text-dark: #1d1d1f;
+            --text-light: #6e6e73;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.3);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            color: var(--text-dark);
+            background: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            font-weight: 400;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+            background: linear-gradient(135deg, #2d3561 0%, #1a1f3a 50%, #0f1419 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.15) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            animation: fadeInUp 0.8s ease 0.2s both;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            animation: fadeInUp 0.8s ease 0.4s both;
+            line-height: 1.6;
+        }
+
+        .hero-contact-circles {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .contact-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .contact-circle:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-circle::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-weight: 400;
+        }
+
+        .contact-circle:hover::after {
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--accent);
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Section Base Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            letter-spacing: -1px;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--secondary);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .stat-card p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .experience-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .experience-title h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            color: var(--accent);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .experience-period {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            text-align: right;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-item li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .experience-item li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: var(--secondary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            background: var(--secondary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            border-radius: 30px;
+            margin: 4rem 2rem;
+            padding: 4rem 2rem;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            opacity: 0.8;
+        }
+
+        .contact-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero p {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .hero-contact-circles {
+                gap: 1.5rem;
+            }
+
+            .contact-circle {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+
+            .experience-period {
+                text-align: left;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">DW</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Darrell Wells</h1>
+            <p>Marketing & Community Operations Professional | Audio Producer | Brand Strategist</p>
+            <div class="hero-contact-circles">
+                <a href="mailto:darrelljavan@gmail.com" class="contact-circle" data-label="Email">
+                    📧
+                </a>
+                <a href="tel:+13608691344" class="contact-circle" data-label="Phone">
+                    📱
+                </a>
+                <a href="https://linkedin.com/in/darrellwells" target="_blank" class="contact-circle" data-label="LinkedIn">
+                    🔗
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>Professional Profile</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.2rem; color: var(--text-light);">
+            Results-driven marketing and community operations professional with 8 years of experience building brands, 
+            fostering engaged communities, and creating authentic content experiences.
+        </p>
+        <div class="about-grid">
+            <div class="stat-card fade-in">
+                <div class="stat-icon">🎯</div>
+                <h3>8 Years</h3>
+                <p>Marketing & Community Experience</p>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-icon">💰</div>
+                <h3>$180K</h3>
+                <p>Generated ROI at Soapbox</p>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-icon">🎵</div>
+                <h3>13 Years</h3>
+                <p>Music Production Background</p>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-icon">🤝</div>
+                <h3>200+</h3>
+                <p>Partnership Relationships Managed</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2>Professional Experience</h2>
+        
+        <div class="experience-item fade-in">
+            <div class="experience-header">
+                <div class="experience-title">
+                    <h3>Director of Education & Engagement</h3>
+                    <div class="experience-company">Soapbox (Contract)</div>
+                </div>
+                <div class="experience-period">
+                    February 2022 – December 2025<br>
+                    Remote
+                </div>
+            </div>
+            <ul>
+                <li>Led educational outreach and community development initiatives for VR education technology platform, building scalable systems that generated $180,000 in projected long-term ROI</li>
+                <li>Designed and implemented 9-initiative CRM tracking system managing 200 institutional partnerships across schools, libraries, and educational organizations</li>
+                <li>Created reusable demo funnel and campus tour acquisition model, establishing perpetual client engagement pipeline</li>
+                <li>Developed strategic partnerships with Stanford University VHIL, USC, and ClassVR, positioning brand within academic research community</li>
+                <li>Launched Library Initiative, expanding market reach to 26 LA-area libraries and 20 homeschool organizations, adding 122 net-new contacts</li>
+                <li>Produced authentic field content (video/audio) for marketing campaigns, independently filming and editing USC demo reaction videos</li>
+            </ul>
+        </div>
+
+        <div class="experience-item fade-in">
+            <div class="experience-header">
+                <div class="experience-title">
+                    <h3>Marketing Consultant & Brand Manager</h3>
+                    <div class="experience-company">Various Clients</div>
+                </div>
+                <div class="experience-period">
+                    2020 – 2025<br>
+                    Seared Pink | Proper Exchange | MAST Productions
+                </div>
+            </div>
+            <ul>
+                <li>Developed comprehensive brand strategies establishing market positioning and driving customer engagement across multiple industries</li>
+                <li>Led complete brand transformation of MAST Productions, establishing current market position and recognition</li>
+                <li>Created and executed multi-channel marketing campaigns across digital and traditional platforms</li>
+                <li>Managed social media presence, content calendars, and community engagement initiatives reaching thousands of followers</li>
+            </ul>
+        </div>
+
+        <div class="experience-item fade-in">
+            <div class="experience-header">
+                <div class="experience-title">
+                    <h3>Freelance Content Creator & Social Media Manager</h3>
+                    <div class="experience-company">Multiple Brands</div>
+                </div>
+                <div class="experience-period">
+                    2018 – 2025<br>
+                    Habitual, Glow Facial Bar, BirdCall, Celsius
+                </div>
+            </div>
+            <ul>
+                <li>Produced high-quality video and audio content for brand marketing campaigns across diverse industries</li>
+                <li>Managed social media accounts and developed content strategies increasing engagement rates by 40%</li>
+                <li>Edited and optimized content for various platforms and target audiences</li>
+                <li>Built strong client relationships through reliable delivery and creative problem-solving</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <h2>Technical Skills & Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-category fade-in">
+                <h3>🎬 Audio & Video Production</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Pro Tools</span>
+                    <span class="skill-tag">Logic Pro</span>
+                    <span class="skill-tag">Ableton Live</span>
+                    <span class="skill-tag">Adobe Premiere</span>
+                    <span class="skill-tag">After Effects</span>
+                    <span class="skill-tag">Final Cut Pro</span>
+                    <span class="skill-tag">Audio Engineering</span>
+                    <span class="skill-tag">Sound Design</span>
+                </div>
+            </div>
+            <div class="skill-category fade-in">
+                <h3>📈 Marketing & Community</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Adobe Creative Suite</span>
+                    <span class="skill-tag">Social Media Management</span>
+                    <span class="skill-tag">Salesforce</span>
+                    <span class="skill-tag">HubSpot</span>
+                    <span class="skill-tag">Google Analytics</span>
+                    <span class="skill-tag">Email Marketing</span>
+                    <span class="skill-tag">Community Management</span>
+                </div>
+            </div>
+            <div class="skill-category fade-in">
+                <h3>✨ Content Creation</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Video Editing</span>
+                    <span class="skill-tag">Graphic Design</span>
+                    <span class="skill-tag">Copywriting</span>
+                    <span class="skill-tag">Podcast Production</span>
+                    <span class="skill-tag">Social Media Content</span>
+                    <span class="skill-tag">Campaign Development</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Let's Connect</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Ready to collaborate? Get in touch!</p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <div class="contact-label">Email</div>
+                <a href="mailto:darrelljavan@gmail.com">darrelljavan@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📱</div>
+                <div class="contact-label">Phone</div>
+                <a href="tel:+13608691344">+1 360 869 1344</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">🔗</div>
+                <div class="contact-label">LinkedIn</div>
+                <a href="https://linkedin.com/in/darrellwells" target="_blank">linkedin.com/in/darrellwells</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Darrell Wells. Available Immediately | Based in Berlin, Germany</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
